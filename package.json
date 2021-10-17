@@ -4,9 +4,15 @@
   "description": "A boilerplate for Node packages",
   "main": "lib/index.cjs.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "/lib"
+  ],
   "scripts": {
+    "build": "rollup -c",
     "commit": "cz",
     "lint": "eslint --ext \".js,.ts\" --ignore-path .gitignore .",
+    "postbuild": "tsc --project tsconfig.build.json --emitDeclarationOnly",
+    "prebuild": "rimraf ./lib",
     "prepare": "husky install",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -21,13 +27,20 @@
     "url": "https://github.com/mogusbi/package-boilerplate/issues"
   },
   "homepage": "https://github.com/mogusbi/package-boilerplate#readme",
+  "dependencies": {
+    "axios": "^0.23.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.8",
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-typescript": "^7.15.0",
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
     "@types/jest": "^27.0.2",
     "@types/node": "^14.17.27",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
@@ -45,8 +58,17 @@
     "jest-mock-axios": "^4.4.1",
     "lint-staged": "^11.2.3",
     "prettier": "2.4.1",
+    "rimraf": "^3.0.2",
     "rollup": "^2.58.0",
+    "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.20",
     "typescript": "^4.4.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/index.ts"
+    ],
+    "testEnvironment": "node"
   },
   "lint-staged": {
     "*": "prettier --ignore-unknown --write",
@@ -56,8 +78,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "axios": "^0.23.0"
   }
 }
