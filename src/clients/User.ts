@@ -32,6 +32,7 @@ class User {
    * Creates a new user
    *
    * @param user - Create user DTO
+   * @returns Created user
    */
   public async createUser(user: ICreateUser): Promise<IUser> {
     const { data } = await this.http.post<IUser>('/user', user);

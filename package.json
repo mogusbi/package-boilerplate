@@ -10,11 +10,12 @@
   "scripts": {
     "build": "rollup -c",
     "commit": "cz",
+    "docgen": "typedoc src/index.ts",
     "lint": "eslint --ext \".js,.ts\" --ignore-path .gitignore .",
     "postbuild": "tsc --project tsconfig.build.json --emitDeclarationOnly",
     "prebuild": "rimraf ./lib",
     "prepare": "husky install",
-    "release": "semantic-release --dry-run",
+    "release": "semantic-release",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -63,6 +64,8 @@
     "rollup": "^2.58.0",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.20",
     "semantic-release": "^18.0.0",
+    "typedoc": "^0.22.6",
+    "typedoc-plugin-missing-exports": "^0.22.3",
     "typescript": "^4.4.4"
   },
   "jest": {

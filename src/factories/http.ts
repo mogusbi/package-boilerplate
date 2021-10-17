@@ -8,6 +8,7 @@ export type THttp = AxiosInstance;
  *
  * @param baseURL - Base URL that will prefix all calls
  * @param key - API key that will be attached to authorise the request
+ * @returns An Axios instance
  */
 const http = (baseURL: string, key: string): AxiosInstance =>
   axios.create({
