@@ -4,5 +4,10 @@
     "noEmit": true
   },
   "extends": "./tsconfig.json",
-  "include": [".eslintrc.js", "babel.config.js", "commitlint.config.js"]
+  "include": [
+    ".eslintrc.js",
+    "babel.config.js",
+    "commitlint.config.js",
+    "__mocks__"
+  ]
 }
